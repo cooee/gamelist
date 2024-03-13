@@ -33,6 +33,7 @@ export default function Browse() {
 					${stores.length ? `&stores=${stores.join(",")}` : ``}`
 				);
 				const data = await response.json();
+				console.log(data);
 				setGames((prevGames) => [...prevGames, ...data.results]);
 				setPage((prevPage) => prevPage + 1);
 			} catch (error) {

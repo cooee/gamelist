@@ -6,11 +6,13 @@ import Game from "./pages/Game";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 
+const base = process.env.NODE_ENV === "development" ? "/" : "/320" // 默认 '/'
+
 function App() {
 	
 	return (
 		<ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-			<Router>
+			<Router basename={base}>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/home" element={<Home />} />

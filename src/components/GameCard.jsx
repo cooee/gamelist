@@ -55,7 +55,7 @@ export default function GameCard({ game, view }) {
 				<>
 					<HoverCard>
 						<HoverCardTrigger>
-							<Link key={game.id} to={`/game/${game.id}`}>
+							<Link key={game.id} to={game.link}>
 								<Card className="aspect-[1.5/1] overflow-hidden mb-1">
 									{game.background_image ? (
 										<Image
@@ -76,7 +76,7 @@ export default function GameCard({ game, view }) {
 								</span>
 							</Link>
 						</HoverCardTrigger>
-						<HoverCardContent>
+						{/* <HoverCardContent>
 							<div className="flex flex-col gap-1">
 								<span className="font-semibold text-xs sm:text-sm md:text-md">
 									{game.name}
@@ -144,7 +144,7 @@ export default function GameCard({ game, view }) {
 									)}
 								</div>
 							</div>
-						</HoverCardContent>
+						</HoverCardContent> */}
 					</HoverCard>
 				</>
 			);
