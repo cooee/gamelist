@@ -5,16 +5,19 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import GameCard from "../components/GameCard";
 import { GameCardSkeleton } from "../components/GameCardSkeleton";
-
+import {Profile} from "../components/Profile"
 import {PopularGames} from "../config/constants";
-
+import { useTheme } from "@/components/theme-provider";
 export default function Home() {
   const size = 5;
   const [popularGames, setPopularGames] = useState([]);
   const [topGames, setTopGames] = useState([]);
   const [newGames, setNewGames] = useState([]);
-
+  const { setTheme } = useTheme();
   useEffect(() => {
+
+    setTheme("dark")
+
     const fetchPopularGames = async () => {
       try {
         // const response = await fetch(
@@ -65,6 +68,8 @@ export default function Home() {
     <>
       <NavBar />
       <div className="py-8 sm:container md:py-16">
+
+         <Profile name={"123"} username={"46"} nim={"1233"}></Profile>
         <div className="px-8 md:px-16">
           <section className="w-full py-16">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
