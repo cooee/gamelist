@@ -3,7 +3,7 @@ import path from "path"
 import { defineConfig } from "vite"
 
 export default defineConfig({
-  base: process.env.NODE_ENV === "development" ? "/" : "/320/" , // 默认 '/'
+  base: process.env.NODE_ENV === "development" ? "/" : "/test/" , // 默认 '/'
   plugins: [react()],
   resolve: {
     alias: {
@@ -11,6 +11,6 @@ export default defineConfig({
     },
   },
   build:{
-    outDir: '320', // 默认是 'dist'  
+    outDir: 'dist', // 默认是 'dist'  
   }
 })

@@ -57,7 +57,7 @@ export default function GameCard({ game, view }) {
 						<HoverCardTrigger>
 							<Link key={game.id} to={game.link}>
 								<Card className="aspect-[1.5/1] overflow-hidden mb-1">
-									{game.background_image ? (
+									{game?.background_image ? (
 										<Image
 											className="w-full h-full object-cover"
 											src={game.background_image}
