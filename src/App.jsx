@@ -6,7 +6,7 @@ import Game from "./pages/Game";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 
-const base = process.env.NODE_ENV === "development" ? "/" : "/tets" // 默认 '/'
+const base = process.env.NODE_ENV === "development" ? "/" : "/test/" // 默认 '/'
 
 function App() {
 	
@@ -15,11 +15,12 @@ function App() {
 			<Router basename={base}>
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/home" element={<Home />} />
 					{/* <Route path="/browse" element={<Browse />} />
 					<Route path="/browse/:ordering" element={<Browse />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/game/:id" element={<Game />} /> */}
-					<Route path="*" element={<NotFound />} />
+					<Route path="*" element={<Home />} />
 				</Routes>
 			</Router>
 		</ThemeProvider>

@@ -17,7 +17,7 @@ export function Profile({ name, uid, avatar }) {
 			<div className="space-y-1 ml-2">
 				<div className="self-center py-2 text-transparent bg-gradient-to-r to-fuchsia-500 from-cyan-500 bg-clip-text w-fit">
 					<h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-						T5 GameList
+						T5 GameCenter
 					</h1>
 				</div>
 				{

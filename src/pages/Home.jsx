@@ -8,7 +8,7 @@ import { GameCardSkeleton } from "../components/GameCardSkeleton";
 import { Profile } from "../components/Profile"
 import { PopularGames } from "../config/constants";
 import { useTheme } from "@/components/theme-provider";
-import { access_token, getAuthCode,user_profile,getQuerys } from "../lib/GateSDK";
+import { access_token, getAuthCode, user_profile, getQuerys } from "../lib/GateSDK";
 
 
 
@@ -17,9 +17,10 @@ export default function Home() {
   const [popularGames, setPopularGames] = useState([]);
   const [topGames, setTopGames] = useState([]);
   const [newGames, setNewGames] = useState([]);
-  const [profile, setProfile] = useState({name: "", uid: "",avatar:""});
+  const [profile, setProfile] = useState({ name: "", uid: "", avatar: "" });
   const { setTheme } = useTheme();
   const [authurl, setAuthurl] = useState("");
+  const [msg, setDebugMsg] = useState("");
 
   const requestAuthCode = useCallback(() => {
     const code = getQuerys(window.location.href)["code"] || "";
@@ -56,11 +57,16 @@ export default function Home() {
 
   const doLogin = useCallback(() => {
     const access_token_data = localStorage.getItem("access_token")
+    setDebugMsg(access_token_data)
     if (access_token_data && access_token_data != "") {
       const token = JSON.parse(access_token_data)
       const now = Math.floor(Date.now() / 1000)
       console.log(token)
+      // 过期了
       if (now > token.expired_at) {
+        requestAuthCode()
+
+      } else {
         const access_code = token.access_code;
         user_profile(access_code).then((response) => {
           console.log(response.data);
@@ -68,12 +74,9 @@ export default function Home() {
           setProfile({
             name: resp.data.name,
             uid: resp.data.uid,
-            avatar:resp.data.avatar
+            avatar: resp.data.avatar
           })
         })
-      } else {
-        requestAuthCode()
-        // setMsg((token.expired_at - now).toString())
       }
 
     } else {
@@ -158,7 +161,7 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                    Discover your next favorite game from T5 Gamelist. Start
+                    Discover your next favorite game from T5 GameCenter. Start
                     your gaming journey now!
                   </p>
                 </div>
