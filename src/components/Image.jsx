@@ -3,7 +3,7 @@ import { useState } from "react";
 import LazyLoad from "react-lazy-load";
 
 export default function Image({ src, alt, className }) {
-	const [isLoaded, setIsLoaded] = useState(false);
+	const [isLoaded, setIsLoaded] = useState(true);
 
 	return (
 		<>
